@@ -1,0 +1,147 @@
+[
+  {
+    "Id": 1,
+    "title": "Slack Notification for Form Submissions",
+    "description": "Send a Slack message when someone fills out a Google Form",
+    "jsonContent": {
+      "name": "Form to Slack Workflow",
+      "nodes": [
+        {
+          "parameters": {},
+          "name": "Start",
+          "type": "n8n-nodes-base.start",
+          "typeVersion": 1,
+          "position": [240, 300]
+        },
+        {
+          "parameters": {
+            "formId": "YOUR_FORM_ID"
+          },
+          "name": "Google Forms Trigger",
+          "type": "n8n-nodes-base.googleFormsTrigger",
+          "typeVersion": 1,
+          "position": [460, 300]
+        },
+        {
+          "parameters": {
+            "channel": "#general",
+            "text": "New form submission: {{ $json.response.name }}"
+          },
+          "name": "Slack",
+          "type": "n8n-nodes-base.slack",
+          "typeVersion": 1,
+          "position": [680, 300]
+        }
+      ],
+      "connections": {
+        "Google Forms Trigger": {
+          "main": [
+            [
+              {
+                "node": "Slack",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "instructions": "1. Replace 'YOUR_FORM_ID' with your actual Google Form ID\n2. Configure Slack credentials in n8n\n3. Set the appropriate channel name\n4. Test the workflow with a form submission",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "userId": "user-1"
+  },
+  {
+    "Id": 2,
+    "title": "Website Monitoring Alert",
+    "description": "Send email alert when website goes down",
+    "jsonContent": {
+      "name": "Website Monitor",
+      "nodes": [
+        {
+          "parameters": {},
+          "name": "Start",
+          "type": "n8n-nodes-base.start",
+          "typeVersion": 1,
+          "position": [240, 300]
+        },
+        {
+          "parameters": {
+            "url": "https://your-website.com",
+            "method": "GET"
+          },
+          "name": "HTTP Request",
+          "type": "n8n-nodes-base.httpRequest",
+          "typeVersion": 1,
+          "position": [460, 300]
+        },
+        {
+          "parameters": {
+            "conditions": {
+              "number": [
+                {
+                  "value1": "{{ $json.statusCode }}",
+                  "operation": "notEqual",
+                  "value2": 200
+                }
+              ]
+            }
+          },
+          "name": "IF",
+          "type": "n8n-nodes-base.if",
+          "typeVersion": 1,
+          "position": [680, 300]
+        },
+        {
+          "parameters": {
+            "toEmail": "admin@yourcompany.com",
+            "subject": "Website Down Alert",
+            "text": "Your website is not responding with status 200"
+          },
+          "name": "Email",
+          "type": "n8n-nodes-base.emailSend",
+          "typeVersion": 1,
+          "position": [900, 300]
+        }
+      ],
+      "connections": {
+        "Start": {
+          "main": [
+            [
+              {
+                "node": "HTTP Request",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "HTTP Request": {
+          "main": [
+            [
+              {
+                "node": "IF",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        },
+        "IF": {
+          "main": [
+            [
+              {
+                "node": "Email",
+                "type": "main",
+                "index": 0
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "instructions": "1. Replace 'https://your-website.com' with your actual website URL\n2. Configure email credentials in n8n settings\n3. Update the recipient email address\n4. Set up a cron trigger to run this workflow every 5 minutes",
+    "createdAt": "2024-01-14T16:45:00Z",
+    "userId": "user-1"
+  }
+]

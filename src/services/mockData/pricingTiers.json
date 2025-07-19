@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "name": "Free",
+    "price": 0,
+    "features": [
+      "3 workflows per month",
+      "Basic prompt input",
+      "JSON download",
+      "Community support",
+      "Basic instructions"
+    ],
+    "workflowLimit": 3
+  },
+  {
+    "Id": 2,
+    "name": "Starter",
+    "price": 15,
+    "features": [
+      "25 workflows per month",
+      "Advanced AI generation",
+      "Detailed instructions",
+      "Workflow history",
+      "Priority support",
+      "Export templates"
+    ],
+    "workflowLimit": 25
+  },
+  {
+    "Id": 3,
+    "name": "Pro",
+    "price": 49,
+    "features": [
+      "Unlimited workflows",
+      "Voice input support",
+      "Bulk generation",
+      "Multiple export formats",
+      "API access",
+      "Custom templates",
+      "Team collaboration"
+    ],
+    "workflowLimit": -1
+  }
+]
