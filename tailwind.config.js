@@ -33,9 +33,10 @@ export default {
           500: '#10b981',
           600: '#059669',
           700: '#047857',
-          800: '#065f46',
+800: '#065f46',
           900: '#064e3b',
-        }
+        },
+        border: '#e2e8f0'
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
