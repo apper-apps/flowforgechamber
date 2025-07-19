@@ -33,14 +33,14 @@ const CodeVsNoCode = () => {
             viewport={{ once: true }}
             className="premium-card-glow p-8"
           >
-            <div className="flex items-center space-x-3 mb-6">
+<div className="flex items-center space-x-3 mb-6">
               <div className="w-8 h-8 bg-gradient-to-br from-neon-blue/20 to-neon-purple/20 rounded-lg flex items-center justify-center border border-neon-blue/30">
                 <ApperIcon name="Code" size={20} className="text-neon-blue" />
               </div>
               <h3 className="text-xl font-semibold text-white">For Developers</h3>
             </div>
             
-<div className="bg-dark-bg/60 p-4 rounded-lg border border-neon-blue/30 mb-6 font-mono text-sm">
+            <div className="bg-dark-bg/60 p-4 rounded-lg border border-neon-blue/30 mb-6 font-mono text-sm">
               <div className="text-neon-blue mb-2">// Paste curl requests</div>
               <div className="text-gray-300">curl -X POST \</div>
               <div className="text-gray-300 ml-2">-H "Content-Type: application/json" \</div>
@@ -48,7 +48,7 @@ const CodeVsNoCode = () => {
               <div className="text-gray-300 ml-2">https://api.example.com/data</div>
               <br />
               <div className="text-neon-orange">// Custom JavaScript functions</div>
-              <div className="text-gray-300">return items.filter(item =&gt; </div>
+              <div className="text-gray-300">return items.filter(item => </div>
               <div className="text-gray-300 ml-2">item.status === 'active'</div>
               <div className="text-gray-300">);</div>
             </div>
