@@ -61,14 +61,13 @@ class AuthService {
     return { ...userSession };
   }
 
-  async logout() {
+async logout() {
     await delay(300);
     
     this.currentUser = null;
     localStorage.removeItem('auton8n_user');
     
     return true;
-return true;
   }
 
   async signup(name, email, password) {
