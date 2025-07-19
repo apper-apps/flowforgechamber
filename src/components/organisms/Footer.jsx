@@ -34,11 +34,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center space-x-2 mb-4">
+<Link to="/" className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center">
                 <ApperIcon name="Zap" size={20} className="text-white" />
               </div>
-              <span className="text-xl font-bold">FlowForge</span>
+              <span className="text-xl font-bold">AutoNate</span>
             </Link>
             <p className="text-slate-400 mb-6 max-w-sm">
               Transform your automation ideas into n8n workflows with the power of AI. No coding required.
@@ -110,9 +110,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
+<div className="border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-slate-400">
-            © {new Date().getFullYear()} FlowForge. All rights reserved.
+            © {new Date().getFullYear()} AutoNate. All rights reserved.
           </p>
           <div className="flex items-center space-x-4 mt-4 sm:mt-0">
             <span className="text-slate-400 text-sm">Made with</span>
