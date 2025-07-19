@@ -13,13 +13,13 @@ import Checkout from "@/pages/Checkout";
 import PurchaseSuccess from "@/pages/PurchaseSuccess";
 import ProtectedRoute from "@/components/ProtectedRoute";
 function App() {
-  return (
+return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-dark-bg">
           <Header />
           <main>
-<Routes>
+            <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />

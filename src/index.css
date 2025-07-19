@@ -8,25 +8,65 @@
     @apply border-border;
   }
   body {
-    @apply bg-white text-slate-900 font-sans;
+    @apply bg-dark-bg text-white font-sans;
+  }
+  
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-neon-purple to-neon-blue bg-clip-text text-transparent;
+  }
+  
+  .gradient-text-orange {
+    @apply bg-gradient-to-r from-neon-orange to-neon-purple bg-clip-text text-transparent;
   }
   
   .gradient-button {
-    @apply bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 transform hover:scale-105 transition-all duration-200;
+    @apply bg-gradient-to-r from-neon-purple to-neon-blue hover:from-neon-blue hover:to-neon-orange transform hover:scale-105 transition-all duration-300;
+  }
+
+  .gradient-button-secondary {
+    @apply bg-gradient-to-r from-neon-orange to-neon-purple hover:from-neon-purple hover:to-neon-blue transform hover:scale-105 transition-all duration-300;
   }
 
   .premium-card {
-    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100;
+    @apply bg-dark-surface/80 backdrop-blur-sm rounded-xl border border-dark-border hover:border-neon-purple/50 transition-all duration-300;
+  }
+
+  .premium-card-glow {
+    @apply bg-dark-surface/80 backdrop-blur-sm rounded-xl border border-dark-border hover:border-neon-purple/50 transition-all duration-300 hover:shadow-lg hover:shadow-neon-purple/20;
   }
 
   .glass-effect {
-    @apply bg-white/80 backdrop-blur-sm border border-white/20;
+    @apply bg-dark-surface/60 backdrop-blur-sm border border-dark-border;
+  }
+
+  .neon-glow {
+    @apply shadow-lg shadow-neon-purple/20 hover:shadow-neon-purple/40 transition-shadow duration-300;
+  }
+
+  .workflow-node {
+    @apply bg-gradient-to-br from-neon-purple/20 to-neon-blue/20 border border-neon-purple/30 rounded-lg p-4 backdrop-blur-sm;
+  }
+
+  .workflow-connection {
+    @apply stroke-neon-blue stroke-2;
+  }
+
+  .section-divider {
+    @apply bg-gradient-to-r from-transparent via-neon-purple/30 to-transparent h-px;
+  }
+
+  .hero-bg {
+    background: radial-gradient(ellipse at center, rgba(130, 70, 241, 0.1) 0%, rgba(11, 11, 20, 1) 70%);
+  }
+
+  .card-hover-glow {
+    @apply hover:shadow-xl hover:shadow-neon-purple/25 transition-all duration-500;
   }
 }
 

@@ -5,7 +5,7 @@ const Card = forwardRef(({ className, ...props }, ref) => {
   return (
     <div
       ref={ref}
-      className={cn("premium-card", className)}
+      className={cn("premium-card-glow", className)}
       {...props}
     />
   );
