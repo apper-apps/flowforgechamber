@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
 import Button from "@/components/atoms/Button";
@@ -7,22 +7,27 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/atoms/Car
 import FormField from "@/components/molecules/FormField";
 import ApperIcon from "@/components/ApperIcon";
 
-const Login = () => {
+const Signup = () => {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
-    password: ""
+    password: "",
+    confirmPassword: ""
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const { login } = useAuth();
+  const { signup } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
-  
-  const from = location.state?.from?.pathname || '/dashboard';
 
   const validateForm = () => {
     const newErrors = {};
+    
+    if (!formData.name) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+    }
     
     if (!formData.email) {
       newErrors.email = "Email is required";
@@ -34,6 +39,12 @@ const Login = () => {
       newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
+    }
+    
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = "Please confirm your password";
+    } else if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "Passwords do not match";
     }
     
     setErrors(newErrors);
@@ -50,8 +61,8 @@ const Login = () => {
     setIsSubmitting(true);
     
     try {
-      await login(formData.email, formData.password);
-      navigate(from, { replace: true });
+      await signup(formData.name, formData.email, formData.password);
+      navigate('/dashboard', { replace: true });
     } catch (error) {
       // Error handling is done in the auth context
     } finally {
@@ -90,19 +101,30 @@ const Login = () => {
             <span className="text-2xl font-bold gradient-text">auton8n</span>
           </Link>
           <h2 className="mt-6 text-3xl font-bold text-slate-900">
-            Welcome back
+            Create your account
           </h2>
           <p className="mt-2 text-sm text-slate-600">
-            Sign in to your account to continue
+            Join thousands of users automating their workflows
           </p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle>Sign in to your account</CardTitle>
+            <CardTitle>Sign up for free</CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
+              <FormField
+                label="Full name"
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                error={errors.name}
+                placeholder="Enter your full name"
+                required
+              />
+
               <FormField
                 label="Email address"
                 type="email"
@@ -121,7 +143,18 @@ const Login = () => {
                 value={formData.password}
                 onChange={handleChange}
                 error={errors.password}
-                placeholder="Enter your password"
+                placeholder="Create a password"
+                required
+              />
+
+              <FormField
+                label="Confirm password"
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                error={errors.confirmPassword}
+                placeholder="Confirm your password"
                 required
               />
 
@@ -133,31 +166,23 @@ const Login = () => {
                 {isSubmitting ? (
                   <>
                     <ApperIcon name="Loader" size={16} className="mr-2 animate-spin" />
-                    Signing in...
+                    Creating account...
                   </>
                 ) : (
                   <>
-                    <ApperIcon name="LogIn" size={16} className="mr-2" />
-                    Sign in
+                    <ApperIcon name="UserPlus" size={16} className="mr-2" />
+                    Create account
                   </>
                 )}
               </Button>
             </form>
-
-            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <h4 className="text-sm font-medium text-blue-900 mb-2">Demo Credentials:</h4>
-              <div className="text-sm text-blue-700 space-y-1">
-                <div><strong>Email:</strong> demo@example.com</div>
-                <div><strong>Password:</strong> password123</div>
-              </div>
-            </div>
           </CardContent>
         </Card>
 
-<p className="mt-8 text-center text-sm text-slate-600">
-          Don't have an account?{" "}
-          <Link to="/signup" className="font-medium text-primary-600 hover:text-primary-500">
-            Sign up for free
+        <p className="mt-8 text-center text-sm text-slate-600">
+          Already have an account?{" "}
+          <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">
+            Sign in
           </Link>
         </p>
       </motion.div>
@@ -165,4 +190,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

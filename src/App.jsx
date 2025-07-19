@@ -6,8 +6,8 @@ import Landing from "@/pages/Landing";
 import Dashboard from "@/pages/Dashboard";
 import WorkflowCreator from "@/pages/WorkflowCreator";
 import Login from "@/pages/Login";
+import Signup from "@/pages/Signup";
 import ProtectedRoute from "@/components/ProtectedRoute";
-
 function App() {
   return (
     <AuthProvider>
@@ -15,9 +15,10 @@ function App() {
         <div className="min-h-screen bg-white">
           <Header />
           <main>
-            <Routes>
+<Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Dashboard />

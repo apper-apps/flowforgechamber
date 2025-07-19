@@ -1,5 +1,5 @@
 // Mock user data
-const mockUsers = [
+let mockUsers = [
   {
     Id: 1,
     email: "demo@example.com",
@@ -12,13 +12,15 @@ const mockUsers = [
     email: "admin@auton8n.com",
     password: "admin123",
     name: "Admin User",
-    avatar: null
+avatar: null
   }
 ];
 
+// Track last used ID for auto-increment
+let lastUserId = 2;
+
 // Simulate authentication delay
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
 class AuthService {
   constructor() {
     this.currentUser = null;
@@ -66,6 +68,42 @@ class AuthService {
     localStorage.removeItem('auton8n_user');
     
     return true;
+return true;
+  }
+
+  async signup(name, email, password) {
+    await delay(800);
+
+    // Check if user already exists
+    const existingUser = mockUsers.find(u => u.email === email);
+    if (existingUser) {
+      throw new Error('An account with this email already exists');
+    }
+
+    // Create new user
+    const newUser = {
+      Id: ++lastUserId,
+      email,
+      password,
+      name,
+      avatar: null
+    };
+
+    // Add to mock users array
+    mockUsers.push(newUser);
+
+    // Create user session without password
+    const userSession = {
+      Id: newUser.Id,
+      email: newUser.email,
+      name: newUser.name,
+      avatar: newUser.avatar
+    };
+
+    this.currentUser = userSession;
+    localStorage.setItem('auton8n_user', JSON.stringify(userSession));
+    
+    return { ...userSession };
   }
 
   getCurrentUser() {
@@ -75,7 +113,6 @@ class AuthService {
   isAuthenticated() {
     return this.currentUser !== null;
   }
-
   async validateSession() {
     await delay(200);
     

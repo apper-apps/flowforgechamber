@@ -51,6 +51,21 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
+};
+
+  const signup = async (name, email, password) => {
+    try {
+      setLoading(true);
+      const userData = await authService.signup(name, email, password);
+      setUser(userData);
+      toast.success(`Welcome to auton8n, ${userData.name}!`);
+      return userData;
+    } catch (error) {
+      toast.error(error.message || 'Signup failed');
+      throw error;
+    } finally {
+      setLoading(false);
+    }
   };
 
   const logout = async () => {
@@ -65,10 +80,10 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
-
-  const value = {
+const value = {
     user,
     login,
+    signup,
     logout,
     loading,
     isAuthenticated: !!user
