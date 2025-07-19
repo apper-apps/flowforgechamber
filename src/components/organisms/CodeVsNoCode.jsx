@@ -26,14 +26,14 @@ const CodeVsNoCode = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Code Side */}
-          <motion.div
+<motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="premium-card-glow p-8"
           >
-<div className="flex items-center space-x-3 mb-6">
+            <div className="flex items-center space-x-3 mb-6">
               <div className="w-8 h-8 bg-gradient-to-br from-neon-blue/20 to-neon-purple/20 rounded-lg flex items-center justify-center border border-neon-blue/30">
                 <ApperIcon name="Code" size={20} className="text-neon-blue" />
               </div>
@@ -41,10 +41,10 @@ const CodeVsNoCode = () => {
             </div>
             
             <div className="bg-dark-bg/60 p-4 rounded-lg border border-neon-blue/30 mb-6 font-mono text-sm">
-              <div className="text-neon-blue mb-2">// Paste curl requests</div>
+<div className="text-neon-blue mb-2">// Paste curl requests</div>
               <div className="text-gray-300">curl -X POST \</div>
               <div className="text-gray-300 ml-2">-H "Content-Type: application/json" \</div>
-              <div className="text-gray-300 ml-2">-d '{"key": "value"}' \</div>
+              <div className="text-gray-300 ml-2">-d {`'{"key": "value"}'`} \</div>
               <div className="text-gray-300 ml-2">https://api.example.com/data</div>
               <br />
               <div className="text-neon-orange">// Custom JavaScript functions</div>
