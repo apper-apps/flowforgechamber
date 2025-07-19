@@ -31,18 +31,10 @@ function App() {
               <Route path="/create" element={
                 <ProtectedRoute>
                   <WorkflowCreator />
-                </ProtectedRoute>
+</ProtectedRoute>
               } />
-              <Route path="/marketplace" element={
-                <ProtectedRoute>
-                  <Marketplace />
-                </ProtectedRoute>
-              } />
-              <Route path="/marketplace/:id" element={
-                <ProtectedRoute>
-                  <TemplateDetails />
-                </ProtectedRoute>
-              } />
+              <Route path="/marketplace" element={<Marketplace />} />
+              <Route path="/marketplace/:id" element={<TemplateDetails />} />
               <Route path="/checkout" element={
                 <ProtectedRoute>
                   <Checkout />
