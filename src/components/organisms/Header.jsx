@@ -1,17 +1,21 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout, isAuthenticated } = useAuth();
 
   const navigation = [
     { name: "Features", href: "/#features" },
     { name: "Pricing", href: "/#pricing" },
-    { name: "Dashboard", href: "/dashboard" },
+    ...(isAuthenticated ? [{ name: "Dashboard", href: "/dashboard" }] : []),
   ];
 
   const isActive = (href) => {
@@ -47,14 +51,60 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
+{/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/create">
-              <Button>
-                <ApperIcon name="Plus" size={16} className="mr-2" />
-                Create Workflow
-              </Button>
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <Link to="/create">
+                  <Button>
+                    <ApperIcon name="Plus" size={16} className="mr-2" />
+                    Create Workflow
+                  </Button>
+                </Link>
+                <div className="relative">
+                  <button
+                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                    className="flex items-center space-x-2 p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                  >
+                    <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                      <span className="text-sm font-medium text-white">
+                        {user?.name?.charAt(0) || 'U'}
+                      </span>
+                    </div>
+                    <ApperIcon name="ChevronDown" size={16} className="text-slate-600" />
+                  </button>
+                  
+                  {isUserMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-slate-200 z-50">
+                      <div className="p-3 border-b border-slate-100">
+                        <p className="text-sm font-medium text-slate-900">{user?.name}</p>
+                        <p className="text-xs text-slate-500">{user?.email}</p>
+                      </div>
+                      <div className="p-1">
+                        <button
+                          onClick={() => {
+                            logout();
+                            setIsUserMenuOpen(false);
+                            navigate('/');
+                          }}
+                          className="w-full text-left px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-md flex items-center"
+                        >
+                          <ApperIcon name="LogOut" size={16} className="mr-2" />
+                          Sign out
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : (
+              <Link to="/login">
+                <Button>
+                  <ApperIcon name="LogIn" size={16} className="mr-2" />
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -90,13 +140,35 @@ const Header = () => {
                     {item.name}
                   </Link>
                 ))}
-                <div className="pt-4">
-                  <Link to="/create" onClick={() => setIsMenuOpen(false)}>
-                    <Button className="w-full">
-                      <ApperIcon name="Plus" size={16} className="mr-2" />
-                      Create Workflow
-                    </Button>
-                  </Link>
+<div className="pt-4 space-y-2">
+                  {isAuthenticated ? (
+                    <>
+                      <Link to="/create" onClick={() => setIsMenuOpen(false)}>
+                        <Button className="w-full">
+                          <ApperIcon name="Plus" size={16} className="mr-2" />
+                          Create Workflow
+                        </Button>
+                      </Link>
+                      <button
+                        onClick={() => {
+                          logout();
+                          setIsMenuOpen(false);
+                          navigate('/');
+                        }}
+                        className="w-full px-3 py-2 text-left text-slate-700 hover:bg-slate-50 rounded-md flex items-center"
+                      >
+                        <ApperIcon name="LogOut" size={16} className="mr-2" />
+                        Sign out ({user?.name})
+                      </button>
+                    </>
+                  ) : (
+                    <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                      <Button className="w-full">
+                        <ApperIcon name="LogIn" size={16} className="mr-2" />
+                        Sign In
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </motion.div>
