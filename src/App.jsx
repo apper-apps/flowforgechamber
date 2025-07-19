@@ -7,6 +7,10 @@ import Dashboard from "@/pages/Dashboard";
 import WorkflowCreator from "@/pages/WorkflowCreator";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
+import Marketplace from "@/pages/Marketplace";
+import TemplateDetails from "@/pages/TemplateDetails";
+import Checkout from "@/pages/Checkout";
+import PurchaseSuccess from "@/pages/PurchaseSuccess";
 import ProtectedRoute from "@/components/ProtectedRoute";
 function App() {
   return (
@@ -27,6 +31,26 @@ function App() {
               <Route path="/create" element={
                 <ProtectedRoute>
                   <WorkflowCreator />
+                </ProtectedRoute>
+              } />
+              <Route path="/marketplace" element={
+                <ProtectedRoute>
+                  <Marketplace />
+                </ProtectedRoute>
+              } />
+              <Route path="/marketplace/:id" element={
+                <ProtectedRoute>
+                  <TemplateDetails />
+                </ProtectedRoute>
+              } />
+              <Route path="/checkout" element={
+                <ProtectedRoute>
+                  <Checkout />
+                </ProtectedRoute>
+              } />
+              <Route path="/purchase-success" element={
+                <ProtectedRoute>
+                  <PurchaseSuccess />
                 </ProtectedRoute>
               } />
             </Routes>

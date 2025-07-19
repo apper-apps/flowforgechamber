@@ -1,0 +1,134 @@
+[
+  {
+    "Id": 1,
+    "name": "Customer Onboarding Automation",
+    "description": "Complete customer onboarding workflow including welcome emails, account setup, and initial training materials delivery.",
+    "category": "Sales & Marketing",
+    "price": 29.99,
+    "rating": 4.8,
+    "downloads": 1247,
+    "author": "AutomationPro",
+    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400",
+    "tags": ["email", "crm", "onboarding", "customer-service"],
+    "features": [
+      "Automated welcome email sequence",
+      "Account setup verification",
+      "Training material delivery",
+      "Progress tracking dashboard",
+      "Custom branding support"
+    ],
+    "requirements": ["Gmail/Outlook integration", "CRM connection", "File storage"],
+    "difficulty": "Beginner",
+    "estimatedSetupTime": "15 minutes"
+  },
+  {
+    "Id": 2,
+    "name": "Social Media Cross-Posting",
+    "description": "Automatically post content across multiple social media platforms with customized messaging for each platform.",
+    "category": "Social Media",
+    "price": 19.99,
+    "rating": 4.6,
+    "downloads": 2156,
+    "author": "SocialBot",
+    "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400",
+    "tags": ["social-media", "content", "automation", "scheduling"],
+    "features": [
+      "Multi-platform posting",
+      "Custom message templates",
+      "Image optimization",
+      "Scheduled publishing",
+      "Analytics tracking"
+    ],
+    "requirements": ["Social media accounts", "Content management system"],
+    "difficulty": "Intermediate",
+    "estimatedSetupTime": "30 minutes"
+  },
+  {
+    "Id": 3,
+    "name": "Invoice Processing & Payment Tracking",
+    "description": "Streamline invoice creation, sending, and payment tracking with automated reminders and reporting.",
+    "category": "Finance",
+    "price": 39.99,
+    "rating": 4.9,
+    "downloads": 892,
+    "author": "FinanceFlow",
+    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400",
+    "tags": ["finance", "invoicing", "payments", "accounting"],
+    "features": [
+      "Automated invoice generation",
+      "Payment reminder system",
+      "Expense tracking",
+      "Financial reporting",
+      "Tax calculation support"
+    ],
+    "requirements": ["Accounting software", "Payment gateway", "Email service"],
+    "difficulty": "Advanced",
+    "estimatedSetupTime": "45 minutes"
+  },
+  {
+    "Id": 4,
+    "name": "E-commerce Order Processing",
+    "description": "Complete order processing workflow from purchase to delivery with inventory management and customer notifications.",
+    "category": "E-commerce",
+    "price": 49.99,
+    "rating": 4.7,
+    "downloads": 1653,
+    "author": "ShopMaster",
+    "image": "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=400",
+    "tags": ["ecommerce", "orders", "inventory", "shipping"],
+    "features": [
+      "Order confirmation emails",
+      "Inventory level monitoring",
+      "Shipping label generation",
+      "Customer notification system",
+      "Return processing automation"
+    ],
+    "requirements": ["E-commerce platform", "Inventory system", "Shipping provider"],
+    "difficulty": "Intermediate",
+    "estimatedSetupTime": "60 minutes"
+  },
+  {
+    "Id": 5,
+    "name": "Lead Nurturing Campaign",
+    "description": "Automated lead nurturing system with personalized email sequences and lead scoring based on engagement.",
+    "category": "Sales & Marketing",
+    "price": 34.99,
+    "rating": 4.5,
+    "downloads": 987,
+    "author": "LeadGen Pro",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
+    "tags": ["leads", "marketing", "email", "crm"],
+    "features": [
+      "Personalized email sequences",
+      "Lead scoring automation",
+      "Engagement tracking",
+      "A/B testing support",
+      "CRM integration"
+    ],
+    "requirements": ["Email marketing platform", "CRM system", "Analytics tools"],
+    "difficulty": "Intermediate",
+    "estimatedSetupTime": "40 minutes"
+  },
+  {
+    "Id": 6,
+    "name": "HR Employee Onboarding",
+    "description": "Comprehensive HR automation for new employee onboarding including document collection and task assignment.",
+    "category": "HR & Operations",
+    "price": 44.99,
+    "rating": 4.8,
+    "downloads": 734,
+    "author": "HR Streamline",
+    "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400",
+    "tags": ["hr", "onboarding", "documents", "tasks"],
+    "features": [
+      "Document collection workflow",
+      "Task assignment automation",
+      "Progress tracking dashboard",
+      "Compliance checking",
+      "Welcome package delivery"
+    ],
+    "requirements": ["HR management system", "Document storage", "Task management tool"],
+    "difficulty": "Advanced",
+    "estimatedSetupTime": "50 minutes"
+  }
+]

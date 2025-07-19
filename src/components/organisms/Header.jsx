@@ -12,10 +12,13 @@ const Header = () => {
   const navigate = useNavigate();
   const { user, logout, isAuthenticated } = useAuth();
 
-  const navigation = [
+const navigation = [
     { name: "Features", href: "/#features" },
     { name: "Pricing", href: "/#pricing" },
-    ...(isAuthenticated ? [{ name: "Dashboard", href: "/dashboard" }] : []),
+    ...(isAuthenticated ? [
+      { name: "Dashboard", href: "/dashboard" },
+      { name: "Marketplace", href: "/marketplace" }
+    ] : []),
   ];
 
   const isActive = (href) => {
