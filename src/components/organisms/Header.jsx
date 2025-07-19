@@ -15,9 +15,9 @@ const Header = () => {
 const navigation = [
     { name: "Features", href: "/#features" },
     { name: "Pricing", href: "/#pricing" },
+    { name: "Marketplace", href: "/marketplace" },
     ...(isAuthenticated ? [
-      { name: "Dashboard", href: "/dashboard" },
-      { name: "Marketplace", href: "/marketplace" }
+      { name: "Dashboard", href: "/dashboard" }
     ] : []),
   ];
 
