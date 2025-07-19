@@ -29,7 +29,7 @@ const Header = () => {
             <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-primary-700 rounded-lg flex items-center justify-center">
               <ApperIcon name="Zap" size={20} className="text-white" />
             </div>
-            <span className="text-xl font-bold gradient-text">AutoNate</span>
+            <span className="text-xl font-bold gradient-text">auton8n</span>
           </Link>
 
           {/* Desktop Navigation */}
